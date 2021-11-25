@@ -1,0 +1,48 @@
+body{
+    background-color:blanchedalmond;
+}
+h1{
+   text-align: center;
+    color:black;
+    
+
+}
+
+
+table{
+    margin: auto;
+     table-layout: fixed;
+     width:500px;
+     height: 500px;
+     
+    
+}
+
+td {
+    border: 1px solid black;
+    width: 50px;
+    overflow: hidden;
+
+}
+
+
+.minutes{
+    border: 1px solid black;
+    width: 50px;
+
+}
+
+.seconds{
+    border: 1px solid black;
+    width: 50px; 
+    
+}
+
+button{
+    margin: auto;
+    cursor: pointer;
+    width: 100px;
+   
+   
+
+}
