@@ -34,11 +34,13 @@ function initGame() {
     setMinesNegsCount(gBoard)
     renderBoard(gBoard)
     renderLives()
+    setTime()
     var minutesLabel = document.querySelector(".minutes");
     var secondsLabel = document.querySelector(".seconds");
     minutesLabel.innerHTML = '0'
     secondsLabel.innerHTML = '0'
     gGame.shownCount = 0;
+    totalSeconds = 0;
 }
 
 function buildBoard() {
@@ -78,12 +80,18 @@ function renderBoard(board) {
         strHtml += '<tr>';
         for (var j = 0; j < board[0].length; j++) {
             var cell = board[i][j];
+            var style = ""
+            if (cell.isShown && !cell.isMine) {
+                style = "background-color: white;";
+            }
             var className = `cell cell-${i}-${j}`;
             strHtml += '<td class ="' + className + '"' + 'onClick = "cellClicked(this,' +
-                i + ' ,' + j + ')" onContextMenu="cellMarked(this, event,' + i + ',' + j + ' )"> ';
+                i + ' ,' + j + ')" onContextMenu="cellMarked(this, event,' + i + ',' + j + ' )" style="' + style + '"> ';
 
-            strHtml += cell.isShown ? cell.isMine ? MINE : cell.minesAroundCount : '';
+            
+            strHtml += cell.isShown ? cell.isMine ? MINE : cell.minesAroundCount != 0 ? cell.minesAroundCount : '' : '';
             strHtml += cell.isMarked ? FLAG : '';
+            
 
             strHtml += '</td>'
         }
@@ -132,8 +140,6 @@ function cellClicked(elCell, i, j) {
         gTimer = setInterval(setTime, 1000);
     }
 
-
-
     if (gBoard[i][j].isMine) {
         gGame.lives--
         renderLives()
@@ -146,6 +152,7 @@ function cellClicked(elCell, i, j) {
     } else {
         if (gBoard[i][j].minesAroundCount == 0) {
             openNegs(i, j)
+
         }
 
         // console.log(gGame.shownCount)
@@ -188,6 +195,7 @@ function cellMarked(elCell, ev, i, j) {
 function gameOver() {
     gGame.isOn = false;
     clearInterval(gTimer);
+    
 }
 
 function revealOtherMines() {
@@ -247,7 +255,7 @@ function openNegs(i, j) {
 
 
 function renderLives() {
-    var life = `🖤`;
+    var life = `💖`;
     var numLives = '';
     for (var i = 0; i < gGame.lives; i++) {
         numLives += life;
@@ -260,6 +268,14 @@ function openCell(cell) {
         gBoard[cell.i][cell.j].isMarked = false;
         gBoard[cell.i][cell.j].isShown = true;
         if (!gBoard.isMine) {
+            if (gBoard[cell.i][cell.j].minesAroundCount == 0) {
+                var className = `.cell-${cell.i}-${cell.j}`;
+                console.log(className)
+                var elCell = document.querySelector(className)
+                console.log(elCell)
+                console.log("changing color")
+                elCell.style.background = '#98fb98';
+            }
             gGame.shownCount++;
         }
     }

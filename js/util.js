@@ -24,8 +24,8 @@ var totalSeconds = 0;
 
 function setTime() {
     
-    var minutesLabel = document.querySelector(".minutes");
-    var secondsLabel = document.querySelector(".seconds");
+  var minutesLabel = document.querySelector(".minutes");
+  var secondsLabel = document.querySelector(".seconds");
   ++totalSeconds;
   secondsLabel.innerHTML = pad(totalSeconds % 60);
   minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));

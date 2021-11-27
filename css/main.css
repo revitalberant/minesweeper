@@ -1,48 +1,70 @@
 body{
-    background-color:blanchedalmond;
+    background-color:rgba(0, 0, 0, 0.726);
+
 }
 h1{
    text-align: center;
-    color:black;
+    color:white;
+   font-size:50px;
     
 
+}
+
+h2{
+    color: whitesmoke;
 }
 
 
 table{
     margin: auto;
-     table-layout: fixed;
+    table-layout: fixed;
      width:500px;
      height: 500px;
+     border: 1px solid white;
+     
      
     
 }
 
 td {
-    border: 1px solid black;
-    width: 50px;
+    border: 1px solid white;
+    width: 25%;
     overflow: hidden;
-
+    cursor: pointer;
+    
 }
 
 
 .minutes{
-    border: 1px solid black;
+    border: 1px solid white;
     width: 50px;
+    color: white;
 
 }
 
 .seconds{
-    border: 1px solid black;
+    border: 1px solid white;
     width: 50px; 
+    color: white;
     
 }
 
 button{
     margin: auto;
     cursor: pointer;
-    width: 100px;
-   
-   
+    width: 200px;
+    height: 50px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    
+}
 
+.cell {
+    font-size: 20px;
+}
+
+.Play{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
